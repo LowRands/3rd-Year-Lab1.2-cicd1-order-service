@@ -19,10 +19,5 @@ This service provides REST endpoints for creating and retrieving purchase orders
 ## Service Configuration
 | Property | Value |
 |-----------|---------|
-| Service Name | catalog-service |
+| Service Name | purchaseOrder-service |
 | Port | 8082 |
-
-Application configuration:
-
-spring.application.name=catalog-service
-server.port=8082
