@@ -2,22 +2,23 @@ package thirdyearlab1.Service;
 
 import org.springframework.stereotype.Service;
 import thirdyearlab1.Model.PurchaseOrder;
-
-import java.util.ArrayList;
+import thirdyearlab1.Repo.PurchaseOrderRepo;
 import java.util.List;
 
 @Service
 public class PurchaseOrderService {
-    private final List<PurchaseOrder> orders = new ArrayList<>();
-    private long nextId = 1;
 
-    public List<PurchaseOrder> getAll() {
-        return orders;
+    private final PurchaseOrderRepo purchaseRepo;
+    public PurchaseOrderService(PurchaseOrderRepo purchaseRepo) {
+        this.purchaseRepo = purchaseRepo;
     }
 
-    public PurchaseOrder create(PurchaseOrder order) {
-        order.setId(nextId++);
-        orders.add(order);
-        return order;
+    public List<PurchaseOrder> getAll() {
+        return purchaseRepo.findAll();
+    }
+
+    public PurchaseOrder create(PurchaseOrder purchaseOrder) {
+        purchaseOrder.setId(null);
+        return purchaseRepo.save(purchaseOrder);
     }
 }
