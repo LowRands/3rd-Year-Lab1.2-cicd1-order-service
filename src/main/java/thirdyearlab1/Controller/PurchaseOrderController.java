@@ -27,4 +27,9 @@ public class PurchaseOrderController {
     public PurchaseOrder create(@RequestBody PurchaseOrder order) {
         return service.create(order);
     }
+
+    @GetMapping("/{id}")
+    public PurchaseOrder getPurchaseOrder(@PathVariable long id) {
+        return service.getById(id);
+    }
 }
