@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class PurchaseOrderController {
+
     private final PurchaseOrderService service;
 
     public PurchaseOrderController(PurchaseOrderService service) {
@@ -17,7 +18,7 @@ public class PurchaseOrderController {
     }
 
     @GetMapping
-    public List<PurchaseOrder> getPurchaseOrders() {
+    public List<PurchaseOrder> getAll() {
 
         return service.getAll();
     }
@@ -28,8 +29,8 @@ public class PurchaseOrderController {
         return service.create(order);
     }
 
-    @GetMapping("/{id}")
-    public PurchaseOrder getPurchaseOrder(@PathVariable long id) {
-        return service.getById(id);
+    @GetMapping("/test-catalog/{productId}")
+    public String testCatalogConnection(@PathVariable Long productId) {
+        return service.testCatalogConnection(productId);
     }
 }

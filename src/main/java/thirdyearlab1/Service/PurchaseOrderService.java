@@ -1,5 +1,6 @@
 package thirdyearlab1.Service;
 
+import thirdyearlab1.Client.CatalogClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,8 +12,11 @@ import java.util.List;
 public class PurchaseOrderService {
 
     private final PurchaseOrderRepo purchaseRepo;
-    public PurchaseOrderService(PurchaseOrderRepo purchaseRepo) {
+    private final CatalogClient catalogClient;
+
+    public PurchaseOrderService(PurchaseOrderRepo purchaseRepo, CatalogClient catalogClient) {
         this.purchaseRepo = purchaseRepo;
+        this.catalogClient = catalogClient;
     }
 
     public List<PurchaseOrder> getAll() {
@@ -24,10 +28,7 @@ public class PurchaseOrderService {
         return purchaseRepo.save(purchaseOrder);
     }
 
-    public PurchaseOrder getById(Long id) {
-        return purchaseRepo.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Purchase Order Not Found"
-                ));
+    public String testCatalogConnection(Long ProductId){
+        return catalogClient.getProductById(ProductId);
     }
 }
