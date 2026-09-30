@@ -4,6 +4,7 @@ package thirdyearlab1.Client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import thirdyearlab1.Client.dto.ProductResponse;
 
 @FeignClient(
         name = "catalog-service",
@@ -12,5 +13,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CatalogClient {
 
     @GetMapping("/products/{id}")
-    String getProductById(@PathVariable("id") Long id);
+    ProductResponse getProductById(@PathVariable("id") Long id);
 }

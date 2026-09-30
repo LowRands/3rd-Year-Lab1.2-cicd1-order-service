@@ -2,6 +2,7 @@ package thirdyearlab1.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import thirdyearlab1.Client.dto.ProductResponse;
 import thirdyearlab1.Model.PurchaseOrder;
 import thirdyearlab1.Service.PurchaseOrderService;
 
@@ -30,7 +31,7 @@ public class PurchaseOrderController {
     }
 
     @GetMapping("/test-catalog/{productId}")
-    public String testCatalogConnection(@PathVariable Long productId) {
+    public ProductResponse testCatalogConnection(@PathVariable Long productId) {
         return service.testCatalogConnection(productId);
     }
-}
+    }
