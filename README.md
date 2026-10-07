@@ -21,3 +21,5 @@ This service provides REST endpoints for creating and retrieving purchase orders
 |-----------|---------|
 | Service Name | purchaseOrder-service |
 | Port | 8082 |
+
+Lab 4 - Branch Lab4 SQL - https://dbfiddle.uk/011xogT_?hide=33554428
